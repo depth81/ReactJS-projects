@@ -11,6 +11,7 @@ const App = () => {
   
   const [capital, setCapital] = useState(null);
   const [interest, setInterest] = useState(null);
+  const [prestamista, setPrestamista] = useState('');
   const [months, setMonths] = useState(null);
   const [total, setTotal] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
@@ -34,6 +35,8 @@ const App = () => {
         message: "Ingresa la cantidad solicitada",
         type: "info",
       }); */
+    }else if(!prestamista){
+      setErrorMessage('Ingresa el nombre del prestamista');
     }else if(!interest){
       setErrorMessage('Ingresa el interes');
       /* showMessage({
@@ -70,6 +73,7 @@ const App = () => {
         <Text style={styles.titleApp}>Cotizador de prestamos</Text>    
         <Form 
           setCapital={setCapital}
+          setPrestamista={setPrestamista}
           setInterest={setInterest}
           setMonths={setMonths}
         />
@@ -79,6 +83,7 @@ const App = () => {
       <Footer calculate={calculate}/>
       <ResultCalculate 
         capital={capital}
+        prestamista={prestamista}
         interest={interest}
         months={months}
         total={total}

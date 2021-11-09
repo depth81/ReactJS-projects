@@ -6,7 +6,7 @@ import colors from "../utils/colors";
 
 export default function Form(props){
     
-    const {setCapital, setInterest, setMonths} = props;
+    const {setCapital, setInterest, setMonths, setPrestamista} = props;
 
     return(
         <View style={styles.viewForm}> 
@@ -21,7 +21,7 @@ export default function Form(props){
                 placeholder="Prestamista"
                 keyboardType="default"
                 style={styles.input}
-                onChange={e=>setCapital(e.nativeEvent.text)}
+                onChange={e=>setPrestamista(e.nativeEvent.text)}
             />
             
             </View>
