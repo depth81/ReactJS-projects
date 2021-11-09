@@ -47,7 +47,7 @@ const App = () => {
         type: "info",
       }); */
     }else{
-      const int = interest/100;
+      const int = parseFloat(interest/100);
       const fee = capital/((1-Math.pow(int+1,-months))/int);
       setTotal({
         monthlyFee:fee.toFixed(2).replace('.',','),
