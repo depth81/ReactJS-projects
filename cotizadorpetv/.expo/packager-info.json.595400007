@@ -1,8 +1,8 @@
 {
   "expoServerNgrokUrl": "https://9j-b7z.anonymous.cotizadorpetv.exp.direct",
   "packagerNgrokUrl": "https://packager.9j-b7z.anonymous.cotizadorpetv.exp.direct",
-  "ngrokPid": 5712,
-  "expoServerPort": 19000,
+  "ngrokPid": 4852,
+  "expoServerPort": null,
   "packagerPort": 19000,
   "packagerPid": null,
   "webpackServerPort": null,

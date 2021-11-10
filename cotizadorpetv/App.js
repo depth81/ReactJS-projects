@@ -4,8 +4,10 @@ import colors from './src/utils/colors';
 import Form from "./src/components/Form";
 import Footer from "./src/components/Footer";
 import ResultCalculate from "./src/components/ResultCalculate";
-/* import { showMessage, hideMessage } from "react-native-flash-message";
-import FlashMessage from "react-native-flash-message"; */
+/* import firebase from './src/utils/firebase';
+import 'firebase/auth'; */
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth'
 
 const App = () => {
   
@@ -15,40 +17,30 @@ const App = () => {
   const [months, setMonths] = useState(null);
   const [total, setTotal] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [user, setUser] = useState(undefined);
 
   useEffect(()=>{
-    /* if(capital && interest && months){
-      calculate();
-    }else{
-      reset();
-    } */
-    if(capital && interest && months) calculate();
+    
+    if(capital && prestamista && interest && months) calculate();
     else reset();
-  },[capital,interest,months])
+    
+    firebase.auth.onStateChange((res)=>{
+      console.log("usuario: " + res);
+      setUser(res);
+    })
+
+  },[capital,prestamista,interest,months])
 
   const calculate = () => {
     reset();
-    /* hideMessage(); */
     if(!capital){
       setErrorMessage('Ingresa la cantidad solicitada');
-      /* showMessage({
-        message: "Ingresa la cantidad solicitada",
-        type: "info",
-      }); */
     }else if(!prestamista){
       setErrorMessage('Ingresa el nombre del prestamista');
     }else if(!interest){
       setErrorMessage('Ingresa el interes');
-      /* showMessage({
-        message: "Ingresa el interes",
-        type: "info",
-      }); */
     }else if(!months){
       setErrorMessage('Ingresa el plazo');
-      /* showMessage({
-        message: "Ingresa el plazo",
-        type: "info",
-      }); */
     }else{
       const int = parseFloat(interest/100);
       const fee = capital/((1-Math.pow(int+1,-months))/int);
@@ -56,7 +48,6 @@ const App = () => {
         monthlyFee:fee.toFixed(2).replace('.',','),
         totalPayable:(fee*months).toFixed(2).replace('.',','),
       });
-      /* reset(); */
     };
   };
 
@@ -78,8 +69,11 @@ const App = () => {
           setMonths={setMonths}
         />
       </SafeAreaView>
-
-      
+      <View>
+        {
+          user ? <Text>Usuario logueado</Text> : <Text>No hay usuario logueado</Text>
+        }
+      </View>
       <Footer calculate={calculate}/>
       <ResultCalculate 
         capital={capital}
@@ -89,7 +83,6 @@ const App = () => {
         total={total}
         errorMessage={errorMessage} 
       />
-      {/* <FlashMessage position="top" /> */}
     </>
   )
 };

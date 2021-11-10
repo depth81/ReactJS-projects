@@ -82,7 +82,8 @@ const styles = StyleSheet.create({
     },
     viewInputs:{
         flexDirection:'row',
-        width:350,
+        width:370,
+        marginLeft:3,
     },
     viewSelectors:{
         flexDirection:'column',
