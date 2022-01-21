@@ -1,0 +1,30 @@
+{
+  "name": "storeapp",
+  "version": "1.0.0",
+  "description": "Proyecto de la tienda virtual",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/depth81/NodeJS-projects.git"
+  },
+  "author": "petv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/depth81/NodeJS-projects/issues"
+  },
+  "homepage": "https://github.com/depth81/NodeJS-projects#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.6",
+    "nodemon": "^2.0.12",
+    "password-validator": "^5.1.1",
+    "react-scripts": "^4.0.3"
+  }
+}
